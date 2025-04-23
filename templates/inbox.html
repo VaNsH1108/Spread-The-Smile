@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+</head>
+<body>
+    <h1>Inbox</h1>
+
+    <h2>Received Messages</h2>
+    {% if received %}
+        <ul>
+            {% for msg in received %}
+                <li>
+                    <strong>From: {{ msg.sender }}</strong><br>
+                    <p>{{ msg.message }}</p>
+                    <form action="/reply/{{ msg.sender }}" method="POST">
+                        <textarea name="reply_message" placeholder="Your reply" required></textarea><br><br>
+                        <button type="submit">Reply</button>
+                    </form>
+                    <hr>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No messages received yet.</p>
+    {% endif %}
+
+    <h2>Sent Messages</h2>
+    {% if sent %}
+        <ul>
+            {% for msg in sent %}
+                <li>
+                    <strong>To: {{ msg.recipient }}</strong><br>
+                    <p>{{ msg.message }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No messages sent yet.</p>
+    {% endif %}
+
+    <br><a href="/logout">Logout</a>
+</body>
+</html>

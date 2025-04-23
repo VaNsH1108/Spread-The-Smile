@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            background: #f2f2f2;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        nav {
+            background: #343a40;
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+        nav a:last-child {
+            color: #ffc107;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        .food-card {
+            background: white;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .food-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .message-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .message-form button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="color: white; font-size: 1.5em;">FoodShare</div>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/upload">Upload Food</a>
+            <a href="/inbox">Inbox</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <h2>Welcome {{ session.username }}</h2>
+
+    {% for food in food_items %}
+    <div class="food-card">
+        <img src="{{ url_for('static', filename='uploads/' ~ food.photo) }}" alt="Food Image">
+        <h3>{{ food.food_name }}</h3>
+        <p><strong>Quantity:</strong> {{ food.quantity }}</p>
+        <p><strong>Location:</strong> {{ food.location }}</p>
+        {% if session.user_type == 'recipient' %}
+        <form class="message-form" method="POST" action="/send_message/{{ food.donor_mobile }}">
+            <textarea name="message" placeholder="Enter your message to donor..." required></textarea>
+            <button type="submit">Contact Donor</button>
+        </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>

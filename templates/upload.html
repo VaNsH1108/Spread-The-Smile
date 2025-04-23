@@ -1,0 +1,80 @@
+<!-- upload.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Food - FoodShare</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #fff3e0, #ffffff);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+        }
+        nav {
+            background: #343a40;
+            padding: 1em;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+        nav a:last-child {
+            margin-right: 0;
+            color: #ffc107;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            background: #ff7043;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div style="color: white; font-size: 1.5em;">FoodShare</div>
+    <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/upload">Upload Food</a>
+        <a href="/inbox">Inbox</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+<div class="container">
+    <h2>Upload Food</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="text" name="food_name" required>
+      <input type="number" name="quantity" required>
+      <input type="text" name="location" required>
+      <input type="file" name="photo">
+      <button type="submit">Upload</button>
+  </form>
+  
+</div>
+</body>
+</html>

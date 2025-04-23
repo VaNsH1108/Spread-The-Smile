@@ -1,0 +1,68 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FoodShare</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #f8f9fa, #e0f7fa);
+            text-align: center;
+        }
+        .hero {
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 3em;
+            color: #343a40;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        a.button {
+            background: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+        }
+        nav {
+            background: #343a40;
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+        nav a:last-child {
+            margin-right: 0;
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="color: white; font-size: 1.5em;">FoodShare</div>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/upload">Upload Food</a>
+            <a href="/inbox">Inbox</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+    <div class="hero">
+        <h1>Welcome to FoodShare</h1>
+        <p>Donate your extra food or request food if you're in need</p>
+        <a class="button" href="/login">Get Started</a>
+        <a class="button" href="/register">Join Now</a>
+    </div>
+</body>
+</html>
